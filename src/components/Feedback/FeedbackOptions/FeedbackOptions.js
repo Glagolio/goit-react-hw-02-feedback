@@ -1,15 +1,21 @@
-// import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from './FeedbackOption.styled';
 
-// const FeedbackOptions ({options, onLeaveFeedback }) => (
-//     <div>
-//         <button type="button" onClick={this.clickOnBtnGood}>
-//           Good
-//         </button>
-//         <button type="button" onClick={this.clickOnBtnNeutral}>
-//           Neutral
-//         </button>
-//         <button type="button" onClick={this.clickOnBtnBad}>
-//           Bad
-//         </button>
-//  </div>
-// )
+const FeedbackOptions = ({ options, onLeaveFeedback }) =>
+  Object.keys(options).map(item => (
+    <Button
+      type="button"
+      name={item}
+      onClick={() => onLeaveFeedback(item)}
+      key={item}>
+      {item}
+    </Button>
+  ));
+
+export default FeedbackOptions;
+
+FeedbackOptions.prototype = {
+  options: PropTypes.objectOf(PropTypes.number),
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
