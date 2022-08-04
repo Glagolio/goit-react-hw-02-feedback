@@ -9,7 +9,11 @@ class Feedback extends Component {
   };
 
   clickOnBtn = e => {
-    console.dir(e.currentTarget);
+    console.dir(e.currentTarget.name);
+
+    // this.setState(prevState => {
+    //   console.log(prevState[e.currentTarget.name]);
+    // });
   };
 
   clickOnBtnGood = () => {
@@ -67,7 +71,11 @@ class Feedback extends Component {
           Bad
         </button> */}
         {Object.keys(this.state).map(item => (
-          <button type="button" onClick={this.clickOnBtn} key={item}>
+          <button
+            type="button"
+            name={item}
+            onClick={this.clickOnBtn}
+            key={item}>
             {item}
           </button>
         ))}
